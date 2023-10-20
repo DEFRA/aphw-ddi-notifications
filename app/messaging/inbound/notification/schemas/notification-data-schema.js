@@ -3,7 +3,6 @@ const { VALIDATION } = require('../../../../constants/errors')
 
 const schema = Joi.object({
   emailAddress: Joi.string().required(),
-  templateId: Joi.string().required(),
   personalisation: Joi.object({
     personalisation: Joi.object().default({})
   }).required()

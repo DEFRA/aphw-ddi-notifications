@@ -1,17 +1,16 @@
 const Joi = require('joi')
 
 const schema = Joi.object({
-  notify: {
-    apiKey: Joi.string().required()
-  }
+  apiKey: Joi.string().required(),
+  templates: Joi.object({
+    registerConfirmation: Joi.string().uuid().required()
+  }).required()
 })
 
 const config = {
-  notify: {
-    apiKey: process.env.NOTIFY_API_KEY,
-    templates: {
-      
-    }
+  apiKey: process.env.NOTIFY_API_KEY,
+  templates: {
+    registerConfirmation: process.env.REGISTER_CONFIRMATION_TEMPLATE_ID,
   }
 }
 
