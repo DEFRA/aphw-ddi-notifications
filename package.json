@@ -1,6 +1,6 @@
 {
   "name": "aphw-ddi-notification",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Service for comsuming ddi notification events and sending emails via GOV.UK Notify",
   "homepage": "https://github.com/DEFRA/aphw-ddi-notification",
   "main": "app/index.js",
