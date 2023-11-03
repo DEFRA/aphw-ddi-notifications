@@ -2,11 +2,11 @@
 # that test output is saved to the host
 
 services:
-  ffc-template-node:
+  aphw-ddi-notifications:
     build:
       target: development
-    image: ffc-template-node-development
-    container_name: ffc-template-node-test
+    image: aphw-ddi-notifications-development
+    container_name: aphw-ddi-notifications-test
     command: npm run test
     volumes:
       - ./app:/home/node/app

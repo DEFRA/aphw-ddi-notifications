@@ -1,0 +1,8 @@
+{{- include "ffc-helm-library.deployment" (list . "aphw-ddi-notifications.deployment") -}}
+{{- define "aphw-ddi-notifications.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "ffc-helm-library.container" (list . "aphw-ddi-notifications.container") }}
+{{- end -}}

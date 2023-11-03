@@ -2,13 +2,12 @@
 # to provide dependencies and expose ports for local testing
 
 services:
-  ffc-template-node:
+  aphw-ddi-notifications:
     build:
       target: development
-    image: ffc-template-node-development
-    container_name: ffc-template-node-development
+    image: aphw-ddi-notifications-development
+    container_name: aphw-ddi-notifications-development
     ports:
-      - "3000:3000"
       - "9229:9229"
     volumes:
       - ./app:/home/node/app

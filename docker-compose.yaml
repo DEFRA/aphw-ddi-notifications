@@ -1,10 +1,18 @@
 services:
-  ffc-template-node:
+  aphw-ddi-notifications:
     build:
       context: .
       target: production
-    image: ffc-template-node
-    container_name: ffc-template-node
+    image: aphw-ddi-notifications
+    container_name: aphw-ddi-notifications
     environment:
-      APPINSIGHTS_CLOUDROLE: ffc-template-node-local
+      APPINSIGHTS_CLOUDROLE: aphw-ddi-notifications-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+      MESSAGE_QUEUE_HOST: ${MESSAGE_QUEUE_HOST:-test}
+      MESSAGE_QUEUE_PASSWORD: ${MESSAGE_QUEUE_PASSWORD:-test}
+      MESSAGE_QUEUE_USER: ${MESSAGE_QUEUE_USER:-test}
+      NOTIFICATIONS_QUEUE_ADDRESS: ${NOTIFICATIONS_QUEUE_ADDRESS:-aphw-ddi-notifications}${MESSAGE_QUEUE_SUFFIX}
+      EVENTS_TOPIC_ADDRESS: ${EVENT_TOPIC_ADDRESS:-dangerous-dogs-index-events}${MESSAGE_QUEUE_SUFFIX}
+      EVENTS_SUBSCRIPTION_ADDRESS: ${EVENT_SUBSCRIPTION_ADDRESS:-dangerous-dogs-index-event-hub}${MESSAGE_QUEUE_SUFFIX}
+      NOTIFY_API_KEY: ${NOTIFY_API_KEY:-test}
+      REGISTER_CONFIRMATION_TEMPLATE_ID: ${REGISTER_CONFIRMATION_TEMPLATE_ID:-8800c3c1-2b6e-43c4-b089-2d1b34cc3ccb}

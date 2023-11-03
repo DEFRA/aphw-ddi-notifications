@@ -1,0 +1,32 @@
+environment: production
+environmentCode:
+name: aphw-ddi-notifications
+namespace: aphw-ddi
+workstream: aphw-ddi
+image: aphw-ddi-notifications
+
+labels:
+  component: service
+
+appInsights:
+  connectionString:
+
+containerConfigMap:
+  name: aphw-ddi-notifications-config-map
+
+containerSecret:
+  name: aphw-ddi-notifications-container-secret
+  type: Opaque
+
+deployment: {}
+
+container:
+  requestMemory: 100Mi
+  requestCpu: 100m
+  limitMemory: 100Mi
+  limitCpu: 100m
+  port: 3000
+  messageQueueHost: host
+  messageQueuePassword: password
+  messageQueueUser: user
+  notifyApiKey: notifyApiKey
