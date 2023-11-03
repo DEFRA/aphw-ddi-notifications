@@ -10,7 +10,7 @@ const schema = Joi.object({
 const config = {
   apiKey: process.env.NOTIFY_API_KEY,
   templates: {
-    registerConfirmation: process.env.REGISTER_CONFIRMATION_TEMPLATE_ID,
+    registerConfirmation: process.env.REGISTER_CONFIRMATION_TEMPLATE_ID
   }
 }
 
