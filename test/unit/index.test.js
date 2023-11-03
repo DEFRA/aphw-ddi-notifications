@@ -1,5 +1,5 @@
 jest.mock('../../app/messaging/inbound/notification')
-const { start, stop } = require('../../app/messaging/inbound/notification')
+const { start } = require('../../app/messaging/inbound/notification')
 
 describe('app control flow', () => {
   beforeEach(() => {
