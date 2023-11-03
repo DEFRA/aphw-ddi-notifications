@@ -1,8 +1,8 @@
 {
-  "name": "aphw-ddi-notification",
+  "name": "aphw-ddi-notifications",
   "version": "0.2.0",
   "description": "Service for comsuming ddi notification events and sending emails via GOV.UK Notify",
-  "homepage": "https://github.com/DEFRA/aphw-ddi-notification",
+  "homepage": "https://github.com/DEFRA/aphw-ddi-notifications",
   "main": "app/index.js",
   "scripts": {
     "pretest": "npm run test:lint",

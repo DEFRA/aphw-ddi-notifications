@@ -2,11 +2,11 @@
 # that test output is saved to the host
 
 services:
-  aphw-ddi-notification:
+  aphw-ddi-notifications:
     build:
       target: development
-    image: aphw-ddi-notification-development
-    container_name: aphw-ddi-notification-test
+    image: aphw-ddi-notifications-development
+    container_name: aphw-ddi-notifications-test
     command: npm run test
     volumes:
       - ./app:/home/node/app

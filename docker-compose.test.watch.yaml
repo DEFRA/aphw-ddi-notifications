@@ -1,5 +1,5 @@
 services:
-  aphw-ddi-notification:
+  aphw-ddi-notifications:
     command: >
       sh -c "npm run test:watch"
     volumes:

@@ -2,11 +2,11 @@
 # to provide dependencies and expose ports for local testing
 
 services:
-  aphw-ddi-notification:
+  aphw-ddi-notifications:
     build:
       target: development
-    image: aphw-ddi-notification-development
-    container_name: aphw-ddi-notification-development
+    image: aphw-ddi-notifications-development
+    container_name: aphw-ddi-notifications-development
     ports:
       - "9229:9229"
     volumes:

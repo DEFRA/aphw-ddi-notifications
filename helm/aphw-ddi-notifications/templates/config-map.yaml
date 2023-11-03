@@ -1,5 +1,5 @@
-{{- include "ffc-helm-library.container-config-map" (list . "aphw-ddi-notification.config-map") -}}
-{{- define "aphw-ddi-notification.config-map" -}}
+{{- include "ffc-helm-library.container-config-map" (list . "aphw-ddi-notifications.config-map") -}}
+{{- define "aphw-ddi-notifications.config-map" -}}
 data:
   NODE_ENV: {{ quote .Values.environment }}
   PORT: {{ quote .Values.container.port }}

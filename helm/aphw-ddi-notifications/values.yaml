@@ -1,9 +1,9 @@
 environment: production
 environmentCode:
-name: aphw-ddi-notification
+name: aphw-ddi-notifications
 namespace: aphw-ddi
 workstream: aphw-ddi
-image: aphw-ddi-notification
+image: aphw-ddi-notifications
 
 labels:
   component: service
@@ -12,10 +12,10 @@ appInsights:
   connectionString:
 
 containerConfigMap:
-  name: aphw-ddi-notification-config-map
+  name: aphw-ddi-notifications-config-map
 
 containerSecret:
-  name: aphw-ddi-notification-container-secret
+  name: aphw-ddi-notifications-container-secret
   type: Opaque
 
 deployment: {}
@@ -26,6 +26,10 @@ container:
   limitMemory: 100Mi
   limitCpu: 100m
   port: 3000
+  messageQueueHost: host
+  messageQueuePassword: password
+  messageQueueUser: user
+  notifyApiKey: notifyApiKey
 
 livenessProbe:
   path: /healthz
