@@ -1,3 +1,3 @@
 module.exports = {
-  REGISTER_CONFIRMATION: 'register-confirmation'
+  GENERIC_ERROR: 'generic-error'
 }

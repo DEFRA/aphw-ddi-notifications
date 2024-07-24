@@ -3,14 +3,14 @@ const Joi = require('joi')
 const schema = Joi.object({
   apiKey: Joi.string().required(),
   templates: Joi.object({
-    registerConfirmation: Joi.string().uuid().required()
+    genericError: Joi.string().uuid().required()
   }).required()
 })
 
 const config = {
   apiKey: process.env.NOTIFY_API_KEY,
   templates: {
-    registerConfirmation: process.env.REGISTER_CONFIRMATION_TEMPLATE_ID
+    genericError: process.env.GENERIC_ERROR_TEMPLATE_ID
   }
 }
 

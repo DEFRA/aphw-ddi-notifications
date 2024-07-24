@@ -30,4 +30,4 @@ container:
   messageQueuePassword: password
   messageQueueUser: user
   notifyApiKey: notifyApiKey
-  registerConfirmationTemplate: dummy
+  genericErrorTemplateId: dummy

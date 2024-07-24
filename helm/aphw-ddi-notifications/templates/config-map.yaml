@@ -4,5 +4,5 @@ data:
   NODE_ENV: {{ quote .Values.environment }}
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
-  REGISTER_CONFIRMATION_TEMPLATE_ID: {{ quote .Values.registerConfirmationTemplate }}
+  GENERIC_ERROR_TEMPLATE_ID: {{ quote .Values.genericErrorTemplateId }}
 {{- end -}}
