@@ -4,8 +4,20 @@ describe('message', () => {
     return notify
   }
 
+  const getNotifyConfigForError = () => {
+    const notify = require('../../../app/config/notify')
+    return notify
+  }
+
   afterEach(() => {
     jest.resetModules()
+  })
+
+  test('should error if invalid item', () => {
+    jest.mock('../../../app/lib/environment-helpers')
+    const { getEnvironmentVariable } = require('../../../app/lib/environment-helpers')
+    getEnvironmentVariable.mockReturnValue({})
+    expect(() => getNotifyConfigForError()).toThrow('The server config is invalid')
   })
 
   test('should pass given correct', () => {
@@ -28,12 +40,5 @@ describe('message', () => {
     const notifyConfig = getNotifyConfig()
     expect(notifyConfig.apiKey).toBe(expectedNotifyApiKey)
     expect(notifyConfig.templates.genericError).toBe(expectedGenericNotifyApiiKey)
-  })
-
-  test('should error if invalid item', () => {
-    jest.mock('../../../app/lib/environment-helpers')
-    const { getEnvironmentVariable } = require('../../../app/lib/environment-helpers')
-    getEnvironmentVariable.mockReturnValue({})
-    expect(() => getNotifyConfig()).toThrow('The message config is invalid')
   })
 })
