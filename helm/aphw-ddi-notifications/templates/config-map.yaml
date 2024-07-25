@@ -4,6 +4,7 @@ data:
   NODE_ENV: {{ quote .Values.environment }}
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
+  MESSAGE_QUEUE_HOST: {{ quote .Values.container.messageQueueHost }}
   GENERIC_ERROR_TEMPLATE_ID: {{ quote .Values.container.genericErrorTemplateId }}
   {{- if and (.Values.environmentCode) (not .Values.pr) }}
   NOTIFICATIONS_QUEUE_ADDRESS: {{ quote .Values.container.notificationsQueueAddress }}-{{ .Values.environmentCode }}
