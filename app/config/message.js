@@ -1,5 +1,6 @@
 const Joi = require('joi')
 const { PRODUCTION } = require('../constants/environments')
+const { getEnvironmentVariable } = require('../lib/environment-helpers')
 
 const schema = Joi.object({
   messageQueue: {
@@ -22,19 +23,19 @@ const schema = Joi.object({
 
 const config = {
   messageQueue: {
-    host: process.env.MESSAGE_QUEUE_HOST,
-    username: process.env.MESSAGE_QUEUE_USER,
-    password: process.env.MESSAGE_QUEUE_PASSWORD,
-    useCredentialChain: process.env.NODE_ENV === PRODUCTION,
-    appInsights: process.env.NODE_ENV === PRODUCTION ? require('applicationinsights') : undefined
+    host: getEnvironmentVariable('MESSAGE_QUEUE_HOST'),
+    username: getEnvironmentVariable('MESSAGE_QUEUE_USER'),
+    password: getEnvironmentVariable('MESSAGE_QUEUE_PASSWORD'),
+    useCredentialChain: getEnvironmentVariable('NODE_ENV') === PRODUCTION,
+    appInsights: getEnvironmentVariable('NODE_ENV') === PRODUCTION ? require('applicationinsights') : undefined
   },
   notificationQueue: {
-    address: process.env.NOTIFICATIONS_QUEUE_ADDRESS,
+    address: getEnvironmentVariable('NOTIFICATIONS_QUEUE_ADDRESS'),
     type: 'queue'
   },
   eventsSubscription: {
-    address: process.env.EVENTS_SUBSCRIPTION_ADDRESS,
-    topic: process.env.EVENTS_TOPIC_ADDRESS,
+    address: getEnvironmentVariable('EVENTS_SUBSCRIPTION_ADDRESS'),
+    topic: getEnvironmentVariable('EVENTS_TOPIC_ADDRESS'),
     type: 'subscription'
   }
 }
