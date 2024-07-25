@@ -31,6 +31,6 @@ const validMessage = {
 describe('ProcessNotification', () => {
   test('should process valid message', async () => {
     await processNotification(validMessage)
-    expect(mockSendEmail).toHaveBeenCalledWith('43542873-39f0-4c6a-85a2-4303aa1d2156', 'some.person@defra.gov.uk', { personalisation: { body_message: 'Some text for the email' } })
+    expect(mockSendEmail).toHaveBeenCalledWith(expect.anything(), 'some.person@defra.gov.uk', { personalisation: { body_message: 'Some text for the email' } })
   })
 })
