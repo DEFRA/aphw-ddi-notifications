@@ -31,4 +31,4 @@ container:
   genericErrorTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
-  eventsSubscriptionAddress: aphw-ddi-events-hub
+  eventsSubscriptionAddress: aphw-ddi-event-hub
