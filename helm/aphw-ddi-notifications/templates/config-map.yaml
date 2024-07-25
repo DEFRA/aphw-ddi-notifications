@@ -5,7 +5,12 @@ data:
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   GENERIC_ERROR_TEMPLATE_ID: {{ quote .Values.container.genericErrorTemplateId }}
+  {{- if and (.Values.environmentCode) (not .Values.pr) }}
   NOTIFICATIONS_QUEUE_ADDRESS: {{ quote .Values.container.notificationsQueueAddress }}-{{ .Values.environmentCode }}
   EVENTS_TOPIC_ADDRESS: {{  quote .Values.container.eventsTopicAddress }}-{{ .Values.environmentCode }}
+  {{ else }}
+  NOTIFICATIONS_QUEUE_ADDRESS: {{ quote .Values.container.notificationsQueueAddress }}
+  EVENTS_TOPIC_ADDRESS: {{  quote .Values.container.eventsTopicAddress }}
+  {{- end }}
   EVENTS_SUBSCRIPTION_ADDRESS: {{ quote .Values.container.eventsSubscriptionAddress }}
 {{- end -}}
