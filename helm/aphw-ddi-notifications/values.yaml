@@ -31,3 +31,6 @@ container:
   messageQueueUser: user
   notifyApiKey: notifyApiKey
   genericErrorTemplateId: dummy
+  notificationsQueueAddress: dummy
+  eventsTopicAddress: dummy
+  eventsSubscriptionAddress: dummy

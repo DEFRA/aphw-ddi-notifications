@@ -5,4 +5,7 @@ data:
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   GENERIC_ERROR_TEMPLATE_ID: {{ quote .Values.container.genericErrorTemplateId }}
+  NOTIFICATIONS_QUEUE_ADDRESS: {{ quote .Values.container.notificationsQueueAddress }}
+  EVENTS_TOPIC_ADDRESS: {{  quote .Values.container.eventsTopicAddress }}
+  EVENTS_SUBSCRIPTION_ADDRESS: {{ quote .Values.container.eventsSubscriptionAddress }}
 {{- end -}}

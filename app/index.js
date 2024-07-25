@@ -1,3 +1,5 @@
+/** instanbul ignore **/
+
 require('./insights').setup()
 require('log-timestamp')
 const { start, stop } = require('./messaging/inbound/notification')
