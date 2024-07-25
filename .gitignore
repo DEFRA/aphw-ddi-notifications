@@ -3,4 +3,6 @@ node_modules
 helm/**/*.lock
 *.tgz
 .vscode
+.idea
 .env
+.DS_Store
