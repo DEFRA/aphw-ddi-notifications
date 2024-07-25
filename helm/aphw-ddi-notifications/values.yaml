@@ -27,8 +27,6 @@ container:
   limitCpu: 100m
   port: 3000
   messageQueueHost: host
-  messageQueuePassword: password
-  messageQueueUser: user
   notifyApiKey: notifyApiKey
   genericErrorTemplateId: dummy
   notificationsQueueAddress: dummy
