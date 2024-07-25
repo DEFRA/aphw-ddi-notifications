@@ -19,7 +19,8 @@ const processNotification = async notification => {
       data.personalisation
     )
   } catch (err) {
-    console.error('Unable to process notification:', err)
+    // console.error('Unable to process notification:', err)
+    console.error('Unable to process notification:', err.response?.data?.errors)
 
     throw err
   }

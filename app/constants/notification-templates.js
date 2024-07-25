@@ -1,8 +1,8 @@
 const { notify } = require('../config')
-const { REGISTER_CONFIRMATION } = require('./notification-types')
+const { GENERIC_ERROR } = require('./notification-types')
 
 const templates = {}
 
-templates[REGISTER_CONFIRMATION] = notify.templates.registerConfirmation
+templates[GENERIC_ERROR] = notify.templates.genericError
 
 module.exports = templates

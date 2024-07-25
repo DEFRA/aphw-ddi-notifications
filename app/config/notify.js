@@ -1,16 +1,17 @@
 const Joi = require('joi')
+const { getEnvironmentVariable } = require('../lib/environment-helpers')
 
 const schema = Joi.object({
   apiKey: Joi.string().required(),
   templates: Joi.object({
-    registerConfirmation: Joi.string().uuid().required()
+    genericError: Joi.string().uuid().required()
   }).required()
 })
 
 const config = {
-  apiKey: process.env.NOTIFY_API_KEY,
+  apiKey: getEnvironmentVariable('NOTIFY_API_KEY'),
   templates: {
-    registerConfirmation: process.env.REGISTER_CONFIRMATION_TEMPLATE_ID
+    genericError: getEnvironmentVariable('GENERIC_ERROR_TEMPLATE_ID')
   }
 }
 
