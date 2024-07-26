@@ -16,7 +16,7 @@ The script will update the following:
 * `docker-compose.test.yaml`: update the service name, `image` and `container_name`
 * `docker-compose.override.yaml`: update the service name, `image` and `container_name`
 * Rename `helm/ffc-template-node`
-* `helm/ffc-template-node/Chart.yaml`: update `description` and `name`
+* `helm/ffc-template-node/Chart.yaml`: update `description` and `name` 
 * `helm/ffc-template-node/values.yaml`: update  `name`, `namespace`, `workstream`, `image`, `containerConfigMap.name`
 * `helm/ffc-template-node/templates/_container.yaml`: update the template name
 * `helm/ffc-template-node/templates/cluster-ip-service.yaml`: update the template name and list parameter of include
