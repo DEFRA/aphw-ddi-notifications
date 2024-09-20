@@ -29,6 +29,7 @@ container:
   messageQueueHost: host
   notifyApiKey: notifyApiKey
   genericErrorTemplateId: dummy
+  verifyEmailTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
   eventsSubscriptionAddress: aphw-ddi-event-hub
