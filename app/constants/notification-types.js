@@ -1,3 +1,4 @@
 module.exports = {
-  GENERIC_ERROR: 'generic-error'
+  GENERIC_ERROR: 'generic-error',
+  VERIFY_EMAIL: 'verify-email'
 }

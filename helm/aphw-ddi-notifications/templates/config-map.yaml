@@ -6,6 +6,7 @@ data:
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   MESSAGE_QUEUE_HOST: {{ quote .Values.container.messageQueueHost }}
   GENERIC_ERROR_TEMPLATE_ID: {{ quote .Values.container.genericErrorTemplateId }}
+  VERIFY_EMAIL_TEMPLATE_ID: {{ quote .Values.container.verifyEmailTemplateId }}
   {{- if and (.Values.environmentCode) (not .Values.pr) }}
   NOTIFICATIONS_QUEUE_ADDRESS: {{ .Values.container.notificationsQueueAddress }}-{{ .Values.environmentCode }}
   EVENTS_TOPIC_ADDRESS: {{ .Values.container.eventsTopicAddress }}-{{ .Values.environmentCode }}

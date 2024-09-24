@@ -4,14 +4,16 @@ const { getEnvironmentVariable } = require('../lib/environment-helpers')
 const schema = Joi.object({
   apiKey: Joi.string().required(),
   templates: Joi.object({
-    genericError: Joi.string().uuid().required()
+    genericError: Joi.string().uuid().required(),
+    verifyEmail: Joi.string().uuid().required()
   }).required()
 })
 
 const config = {
   apiKey: getEnvironmentVariable('NOTIFY_API_KEY'),
   templates: {
-    genericError: getEnvironmentVariable('GENERIC_ERROR_TEMPLATE_ID')
+    genericError: getEnvironmentVariable('GENERIC_ERROR_TEMPLATE_ID'),
+    verifyEmail: getEnvironmentVariable('VERIFY_EMAIL_TEMPLATE_ID')
   }
 }
 

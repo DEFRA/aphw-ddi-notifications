@@ -11,6 +11,11 @@ describe('GetNotificationType', () => {
     expect(res).toBe('generic-error')
   })
 
+  test('should handle verify-email type', async () => {
+    const res = getNotificationType('verify-email')
+    expect(res).toBe('verify-email')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })
