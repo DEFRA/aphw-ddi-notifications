@@ -30,6 +30,7 @@ container:
   notifyApiKey: notifyApiKey
   genericErrorTemplateId: dummy
   verifyEmailTemplateId: dummy
+  userFeedbackTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
   eventsSubscriptionAddress: aphw-ddi-event-hub
