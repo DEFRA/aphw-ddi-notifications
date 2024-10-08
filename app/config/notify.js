@@ -6,7 +6,8 @@ const schema = Joi.object({
   templates: Joi.object({
     genericError: Joi.string().uuid().required(),
     verifyEmail: Joi.string().uuid().required(),
-    userFeedback: Joi.string().uuid().required()
+    userFeedback: Joi.string().uuid().required(),
+    userInvite: Joi.string().uuid().required()
   }).required()
 })
 
@@ -15,7 +16,8 @@ const config = {
   templates: {
     genericError: getEnvironmentVariable('GENERIC_ERROR_TEMPLATE_ID'),
     verifyEmail: getEnvironmentVariable('VERIFY_EMAIL_TEMPLATE_ID'),
-    userFeedback: getEnvironmentVariable('USER_FEEDBACK_TEMPLATE_ID')
+    userFeedback: getEnvironmentVariable('USER_FEEDBACK_TEMPLATE_ID'),
+    userInvite: getEnvironmentVariable('USER_INVITE_TEMPLATE_ID')
   }
 }
 
