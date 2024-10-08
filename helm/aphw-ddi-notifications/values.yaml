@@ -31,6 +31,7 @@ container:
   genericErrorTemplateId: dummy
   verifyEmailTemplateId: dummy
   userFeedbackTemplateId: dummy
+  userInviteTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
   eventsSubscriptionAddress: aphw-ddi-event-hub
