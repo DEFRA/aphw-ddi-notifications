@@ -32,6 +32,7 @@ container:
   verifyEmailTemplateId: dummy
   userFeedbackTemplateId: dummy
   userInviteTemplateId: dummy
+  reportSomethingTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
   eventsSubscriptionAddress: aphw-ddi-event-hub
