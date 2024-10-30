@@ -26,6 +26,11 @@ describe('GetNotificationType', () => {
     expect(res).toBe('user-invite')
   })
 
+  test('should handle report-something type', async () => {
+    const res = getNotificationType('report-something')
+    expect(res).toBe('report-something')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })
