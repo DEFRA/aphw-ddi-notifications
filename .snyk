@@ -5,6 +5,11 @@ ignore:
   SNYK-JS-AXIOS-6032459:
     - '*':
         reason: None Given
-        expires: 2025-02-01T09:53:33.654Z
+        expires: 2023-12-02T09:53:33.654Z
         created: 2023-11-02T09:53:33.660Z
+  SNYK-JS-AXIOS-6671926:
+    - '*':
+        reason: None Given
+        expires: 2025-02-06T15:00:00.000Z
+        created: 2024-12-06T15:00:00.000Z
 patch: {}
