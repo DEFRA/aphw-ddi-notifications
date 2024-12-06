@@ -8,7 +8,9 @@ const schema = Joi.object({
     verifyEmail: Joi.string().uuid().required(),
     userFeedback: Joi.string().uuid().required(),
     userInvite: Joi.string().uuid().required(),
-    reportSomething: Joi.string().uuid().required()
+    reportSomething: Joi.string().uuid().required(),
+    form2SubmissionToDefra: Joi.string().uuid().required(),
+    form2ConfirmationToPolice: Joi.string().uuid().required()
   }).required()
 })
 
@@ -19,7 +21,9 @@ const config = {
     verifyEmail: getEnvironmentVariable('VERIFY_EMAIL_TEMPLATE_ID'),
     userFeedback: getEnvironmentVariable('USER_FEEDBACK_TEMPLATE_ID'),
     userInvite: getEnvironmentVariable('USER_INVITE_TEMPLATE_ID'),
-    reportSomething: getEnvironmentVariable('REPORT_SOMETHING_TEMPLATE_ID')
+    reportSomething: getEnvironmentVariable('REPORT_SOMETHING_TEMPLATE_ID'),
+    form2SubmissionToDefra: getEnvironmentVariable('FORM2_SUBMISSION_TO_DEFRA_TEMPLATE_ID'),
+    form2ConfirmationToPolice: getEnvironmentVariable('FORM2_CONFIRMATION_TO_POLICE_TEMPLATE_ID')
   }
 }
 

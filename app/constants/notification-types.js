@@ -3,5 +3,7 @@ module.exports = {
   VERIFY_EMAIL: 'verify-email',
   USER_FEEDBACK: 'user-feedback',
   USER_INVITE: 'user-invite',
-  REPORT_SOMETHING: 'report-something'
+  REPORT_SOMETHING: 'report-something',
+  FORM2_SUBMISSION_TO_DEFRA: 'form2-submission-to-defra',
+  FORM2_CONFIRMATION_TO_POLICE: 'form2-confirmation-to-police'
 }

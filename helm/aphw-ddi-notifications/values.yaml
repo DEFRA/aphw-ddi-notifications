@@ -38,6 +38,8 @@ container:
   userFeedbackTemplateId: dummy
   userInviteTemplateId: dummy
   reportSomethingTemplateId: dummy
+  form2SubmissionToDefraTemplateId: dummy
+  form2ConfirmationToPoliceTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
   eventsSubscriptionAddress: aphw-ddi-event-hub

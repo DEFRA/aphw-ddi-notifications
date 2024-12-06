@@ -31,6 +31,16 @@ describe('GetNotificationType', () => {
     expect(res).toBe('report-something')
   })
 
+  test('should handle form2-submission-to-defra type', async () => {
+    const res = getNotificationType('form2-submission-to-defra')
+    expect(res).toBe('form2-submission-to-defra')
+  })
+
+  test('should handle form2-confirmation-to-police type', async () => {
+    const res = getNotificationType('form2-confirmation-to-police')
+    expect(res).toBe('form2-confirmation-to-police')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })
