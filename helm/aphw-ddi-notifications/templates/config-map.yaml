@@ -12,6 +12,7 @@ data:
   REPORT_SOMETHING_TEMPLATE_ID: {{ quote .Values.container.reportSomethingTemplateId }}
   FORM2_SUBMISSION_TO_DEFRA_TEMPLATE_ID: {{ quote .Values.container.form2SubmissionToDefraTemplateId }}
   FORM2_CONFIRMATION_TO_POLICE_TEMPLATE_ID: {{ quote .Values.container.form2ConfirmationToPoliceTemplateId }}
+  SEND_APPLICATION_PACK_TEMPLATE_ID: {{ quote .Values.container.sendApplicationPackTemplateId }}
   {{- if and (.Values.environmentCode) (not .Values.pr) }}
   NOTIFICATIONS_QUEUE_ADDRESS: {{ .Values.container.notificationsQueueAddress }}-{{ .Values.environmentCode }}
   EVENTS_TOPIC_ADDRESS: {{ .Values.container.eventsTopicAddress }}-{{ .Values.environmentCode }}

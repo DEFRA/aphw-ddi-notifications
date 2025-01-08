@@ -1,6 +1,6 @@
 {
   "name": "aphw-ddi-notifications",
-  "version": "0.3.13",
+  "version": "0.4.0",
   "description": "Service for comsuming ddi notification events and sending emails via GOV.UK Notify",
   "homepage": "https://github.com/DEFRA/aphw-ddi-notifications",
   "main": "app/index.js",
@@ -17,6 +17,8 @@
   "contributors": [],
   "license": "OGL-UK-3.0",
   "dependencies": {
+    "@azure/identity": "4.2.1",
+    "@azure/storage-blob": "^12.11.0",
     "@hapi/hapi": "21.3.2",
     "applicationinsights": "2.8.0",
     "ffc-messaging": "2.10.0",
