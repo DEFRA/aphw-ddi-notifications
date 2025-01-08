@@ -1,4 +1,5 @@
 const Joi = require('joi')
+const { getEnvironmentVariable } = require('../lib/environment-helpers')
 
 // Define config schema
 const schema = Joi.object({
@@ -10,10 +11,10 @@ const schema = Joi.object({
 
 // Build config
 const config = {
-  connectionString: process.env.AZURE_STORAGE_CONNECTION_STRING,
-  storageAccount: process.env.AZURE_STORAGE_ACCOUNT_NAME,
-  attachmentsContainer: process.env.AZURE_STORAGE_ATTACHMENTS_CONTAINER,
-  useConnectionString: process.env.AZURE_STORAGE_USE_CONNECTION_STRING
+  connectionString: getEnvironmentVariable('AZURE_STORAGE_CONNECTION_STRING'),
+  storageAccount: getEnvironmentVariable('AZURE_STORAGE_ACCOUNT_NAME'),
+  attachmentsContainer: getEnvironmentVariable('AZURE_STORAGE_ATTACHMENTS_CONTAINER'),
+  useConnectionString: getEnvironmentVariable('AZURE_STORAGE_USE_CONNECTION_STRING')
 }
 
 // Validate config
