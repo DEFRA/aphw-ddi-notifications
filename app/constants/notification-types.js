@@ -5,5 +5,6 @@ module.exports = {
   USER_INVITE: 'user-invite',
   REPORT_SOMETHING: 'report-something',
   FORM2_SUBMISSION_TO_DEFRA: 'form2-submission-to-defra',
-  FORM2_CONFIRMATION_TO_POLICE: 'form2-confirmation-to-police'
+  FORM2_CONFIRMATION_TO_POLICE: 'form2-confirmation-to-police',
+  SEND_APPLICATION_PACK: 'send-application-pack'
 }

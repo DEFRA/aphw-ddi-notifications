@@ -10,7 +10,8 @@ const schema = Joi.object({
     userInvite: Joi.string().uuid().required(),
     reportSomething: Joi.string().uuid().required(),
     form2SubmissionToDefra: Joi.string().uuid().required(),
-    form2ConfirmationToPolice: Joi.string().uuid().required()
+    form2ConfirmationToPolice: Joi.string().uuid().required(),
+    sendApplicationPack: Joi.string().uuid().required()
   }).required()
 })
 
@@ -23,7 +24,8 @@ const config = {
     userInvite: getEnvironmentVariable('USER_INVITE_TEMPLATE_ID'),
     reportSomething: getEnvironmentVariable('REPORT_SOMETHING_TEMPLATE_ID'),
     form2SubmissionToDefra: getEnvironmentVariable('FORM2_SUBMISSION_TO_DEFRA_TEMPLATE_ID'),
-    form2ConfirmationToPolice: getEnvironmentVariable('FORM2_CONFIRMATION_TO_POLICE_TEMPLATE_ID')
+    form2ConfirmationToPolice: getEnvironmentVariable('FORM2_CONFIRMATION_TO_POLICE_TEMPLATE_ID'),
+    sendApplicationPack: getEnvironmentVariable('SEND_APPLICATION_PACK_TEMPLATE_ID')
   }
 }
 

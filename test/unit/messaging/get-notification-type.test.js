@@ -41,6 +41,11 @@ describe('GetNotificationType', () => {
     expect(res).toBe('form2-confirmation-to-police')
   })
 
+  test('should handle send-application-pack type', async () => {
+    const res = getNotificationType('send-application-pack')
+    expect(res).toBe('send-application-pack')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })

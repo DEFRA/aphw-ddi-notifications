@@ -32,6 +32,9 @@ container:
   limitCpu: 100m
   port: 3000
   messageQueueHost: host
+  azureStorageConnectionString: dummy
+  azureStorageUseConnectionString: false
+  azureStorageAccountName: aphwddi
   notifyApiKey: notifyApiKey
   genericErrorTemplateId: dummy
   verifyEmailTemplateId: dummy
@@ -40,6 +43,7 @@ container:
   reportSomethingTemplateId: dummy
   form2SubmissionToDefraTemplateId: dummy
   form2ConfirmationToPoliceTemplateId: dummy
+  sendApplicationPackTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
   eventsSubscriptionAddress: aphw-ddi-event-hub
