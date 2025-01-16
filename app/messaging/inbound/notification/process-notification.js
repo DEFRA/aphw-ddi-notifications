@@ -4,6 +4,7 @@ const { getNotificationType } = require('./get-notification-type')
 const { validate } = require('./schemas/notification-data-schema')
 const { NotifyClient } = require('notifications-node-client')
 const { getAttachmentFile } = require('../../../storage/attachments')
+const { POST_APPLICATION_PACK } = require('../../../constants/notification-types')
 
 const client = new NotifyClient(notify.apiKey)
 
@@ -21,18 +22,22 @@ const processNotification = async notification => {
       const filename = customFields[customFields.file_key_to_attach]
       const fileContents = await getAttachmentFile(filename)
 
-      const options = { confirmEmailBeforeDownload: false }
-      if (customFields.filename_for_display) {
-        options.filename = customFields.filename_for_display
+      if (type === POST_APPLICATION_PACK) {
+        await client.sendPrecompiledLetter(customFields.index_number, fileContents)
+      } else {
+        const options = { confirmEmailBeforeDownload: false }
+        if (customFields.filename_for_display) {
+          options.filename = customFields.filename_for_display
+        }
+
+        customFields[customFields.file_key_to_attach] = client.prepareUpload(fileContents, options)
+        delete customFields.file_key_to_attach
+
+        await client.sendEmail(templates[type],
+          data.emailAddress,
+          { personalisation: customFields }
+        )
       }
-
-      customFields[customFields.file_key_to_attach] = client.prepareUpload(fileContents, options)
-      delete customFields.file_key_to_attach
-
-      await client.sendEmail(templates[type],
-        data.emailAddress,
-        { personalisation: customFields }
-      )
     } else {
       await client.sendEmail(templates[type],
         data.emailAddress,

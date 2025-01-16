@@ -46,6 +46,11 @@ describe('GetNotificationType', () => {
     expect(res).toBe('send-application-pack')
   })
 
+  test('should handle post-application-pack type', async () => {
+    const res = getNotificationType('post-application-pack')
+    expect(res).toBe('post-application-pack')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })
