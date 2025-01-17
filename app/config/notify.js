@@ -11,7 +11,7 @@ const schema = Joi.object({
     reportSomething: Joi.string().uuid().required(),
     form2SubmissionToDefra: Joi.string().uuid().required(),
     form2ConfirmationToPolice: Joi.string().uuid().required(),
-    sendApplicationPack: Joi.string().uuid().required()
+    emailApplicationPack: Joi.string().uuid().required()
   }).required()
 })
 
@@ -25,7 +25,7 @@ const config = {
     reportSomething: getEnvironmentVariable('REPORT_SOMETHING_TEMPLATE_ID'),
     form2SubmissionToDefra: getEnvironmentVariable('FORM2_SUBMISSION_TO_DEFRA_TEMPLATE_ID'),
     form2ConfirmationToPolice: getEnvironmentVariable('FORM2_CONFIRMATION_TO_POLICE_TEMPLATE_ID'),
-    sendApplicationPack: getEnvironmentVariable('SEND_APPLICATION_PACK_TEMPLATE_ID')
+    emailApplicationPack: getEnvironmentVariable('SEND_APPLICATION_PACK_TEMPLATE_ID')
   }
 }
 

@@ -6,7 +6,7 @@ const validMessageForEmail = {
   id: 'b68da60f-6638-4acd-93e6-77f34b0b4ead',
   time: '2024-07-24T16:39:00.000Z',
   specversion: '1.0',
-  type: 'send-application-pack',
+  type: 'email-application-pack',
   source: 'aphw-ddi-portal',
   data: {
     personalisation: {
@@ -110,6 +110,7 @@ describe('ProcessNotification with attachment', () => {
 
     await processNotification(validMessageForPost)
 
-    expect(mockSendPrecompiledLetter).toHaveBeenCalledWith('ED125', expect.anything())
+    expect(mockSendPrecompiledLetter).toHaveBeenCalledTimes(1)
+    expect(mockSendPrecompiledLetter.mock.calls[0][0].startsWith('ED125_')).toBeTruthy()
   })
 })

@@ -9,7 +9,7 @@ const processNotificationMessage = async (message, receiver) => {
     await processNotification(event)
     await receiver.completeMessage(message)
   } catch (err) {
-    console.error('Unable to process notification:', err)
+    console.error('Unable to process notification message:', err.message)
 
     if (err.category === VALIDATION) {
       await receiver.deadLetterMessage(message)

@@ -41,9 +41,9 @@ describe('GetNotificationType', () => {
     expect(res).toBe('form2-confirmation-to-police')
   })
 
-  test('should handle send-application-pack type', async () => {
-    const res = getNotificationType('send-application-pack')
-    expect(res).toBe('send-application-pack')
+  test('should handle email-application-pack type', async () => {
+    const res = getNotificationType('email-application-pack')
+    expect(res).toBe('email-application-pack')
   })
 
   test('should handle post-application-pack type', async () => {

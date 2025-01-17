@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid')
 const templates = require('../../../constants/notification-templates')
 const { notify } = require('../../../config')
 const { getNotificationType } = require('./get-notification-type')
@@ -9,21 +10,25 @@ const { POST_APPLICATION_PACK } = require('../../../constants/notification-types
 const client = new NotifyClient(notify.apiKey)
 
 const processNotification = async notification => {
+  let type
+  let reference
   try {
     const data = notification.data
 
     validate(data)
 
-    const type = getNotificationType(notification.type)
+    type = getNotificationType(notification.type)
 
     const customFields = data.personalisation?.personalisation
+    reference = customFields?.index_number
 
     if (customFields?.file_key_to_attach) {
       const filename = customFields[customFields.file_key_to_attach]
       const fileContents = await getAttachmentFile(filename)
 
       if (type === POST_APPLICATION_PACK) {
-        await client.sendPrecompiledLetter(customFields.index_number, fileContents)
+        reference = `${customFields.index_number}_${uuidv4()}`
+        await client.sendPrecompiledLetter(reference, fileContents)
       } else {
         const options = { confirmEmailBeforeDownload: false }
         if (customFields.filename_for_display) {
@@ -45,8 +50,7 @@ const processNotification = async notification => {
       )
     }
   } catch (err) {
-    // console.error('Unable to process notification:', err)
-    console.error('Unable to process notification:', err.response?.data?.errors)
+    console.error(`Unable to process notification of type ${type} and reference ${reference}:`, err.response?.data?.errors)
 
     throw err
   }

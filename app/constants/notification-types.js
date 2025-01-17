@@ -6,6 +6,6 @@ module.exports = {
   REPORT_SOMETHING: 'report-something',
   FORM2_SUBMISSION_TO_DEFRA: 'form2-submission-to-defra',
   FORM2_CONFIRMATION_TO_POLICE: 'form2-confirmation-to-police',
-  SEND_APPLICATION_PACK: 'send-application-pack',
+  EMAIL_APPLICATION_PACK: 'email-application-pack',
   POST_APPLICATION_PACK: 'post-application-pack'
 }
