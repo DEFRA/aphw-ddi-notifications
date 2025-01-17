@@ -3,9 +3,3 @@ resources:
   queues:
     - name: aphw-ddi-notifications
       role: receiver
-      maxSize: 5120
-      duplicateDetection: false
-      messageTimeToLive: P14D
-      session: false
-      partitioning: false
-      lockDuration: PT30S
