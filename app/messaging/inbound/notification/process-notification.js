@@ -28,7 +28,7 @@ const processNotification = async notification => {
 
       if (type === POST_APPLICATION_PACK) {
         reference = `${customFields.index_number}_${uuidv4()}`
-        await client.sendPrecompiledLetter(reference, fileContents)
+        await client.sendPrecompiledLetter(reference, fileContents, 'first')
       } else {
         const options = { confirmEmailBeforeDownload: false }
         if (customFields.filename_for_display) {
