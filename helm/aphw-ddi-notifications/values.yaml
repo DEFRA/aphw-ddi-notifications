@@ -47,7 +47,7 @@ container:
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
 
-aadPodIdentity: true
+workloadIdentity: true
 
 azureIdentity:
   clientID: not-a-real-clientID
