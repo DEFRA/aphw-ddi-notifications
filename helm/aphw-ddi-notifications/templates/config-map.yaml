@@ -20,5 +20,4 @@ data:
   NOTIFICATIONS_QUEUE_ADDRESS: {{ quote .Values.container.notificationsQueueAddress }}
   EVENTS_TOPIC_ADDRESS: {{ quote .Values.container.eventsTopicAddress }}
   {{- end }}
-  EVENTS_SUBSCRIPTION_ADDRESS: {{ quote .Values.container.eventsSubscriptionAddress }}
 {{- end -}}

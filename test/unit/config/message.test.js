@@ -22,8 +22,8 @@ describe('message', () => {
       return process.env[key]
     })
 
-    const { eventsSubscription } = getMessageConfig()
-    expect(eventsSubscription.appInsights).toEqual(undefined)
+    const { notificationQueue } = getMessageConfig()
+    expect(notificationQueue.appInsights).toEqual(undefined)
   })
 
   test('should use appinsights in production', () => {
@@ -35,8 +35,8 @@ describe('message', () => {
       }
       return process.env[key]
     })
-    const { eventsSubscription } = getMessageConfig()
-    expect(eventsSubscription.appInsights).toEqual({})
+    const { notificationQueue } = getMessageConfig()
+    expect(notificationQueue.appInsights).toEqual({})
   })
 
   test('should error if invalid item', () => {

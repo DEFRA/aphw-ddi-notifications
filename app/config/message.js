@@ -13,11 +13,6 @@ const schema = Joi.object({
   notificationQueue: {
     address: Joi.string(),
     type: Joi.string()
-  },
-  eventsSubscription: {
-    address: Joi.string(),
-    topic: Joi.string(),
-    type: Joi.string().default('subscription')
   }
 })
 
@@ -32,11 +27,6 @@ const config = {
   notificationQueue: {
     address: getEnvironmentVariable('NOTIFICATIONS_QUEUE_ADDRESS'),
     type: 'queue'
-  },
-  eventsSubscription: {
-    address: getEnvironmentVariable('EVENTS_SUBSCRIPTION_ADDRESS'),
-    topic: getEnvironmentVariable('EVENTS_TOPIC_ADDRESS'),
-    type: 'subscription'
   }
 }
 
@@ -48,10 +38,8 @@ if (result.error) {
   throw new Error(`The message config is invalid. ${result.error.message}`)
 }
 
-const eventsSubscription = { ...result.value.messageQueue, ...result.value.eventsSubscription }
 const notificationQueue = { ...result.value.messageQueue, ...result.value.notificationQueue }
 
 module.exports = {
-  eventsSubscription,
   notificationQueue
 }
