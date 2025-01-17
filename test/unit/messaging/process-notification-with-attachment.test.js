@@ -1,11 +1,12 @@
 const mockSendEmail = jest.fn()
 const mockPrepareUpload = jest.fn()
+const mockSendPrecompiledLetter = jest.fn()
 
-const validMessage = {
+const validMessageForEmail = {
   id: 'b68da60f-6638-4acd-93e6-77f34b0b4ead',
   time: '2024-07-24T16:39:00.000Z',
   specversion: '1.0',
-  type: 'send-application-pack',
+  type: 'email-application-pack',
   source: 'aphw-ddi-portal',
   data: {
     personalisation: {
@@ -22,11 +23,31 @@ const validMessage = {
   }
 }
 
+const validMessageForPost = {
+  id: 'b68da60f-6638-4acd-93e6-77f34b0b4ead',
+  time: '2024-07-24T16:39:00.000Z',
+  specversion: '1.0',
+  type: 'post-application-pack',
+  source: 'aphw-ddi-portal',
+  data: {
+    personalisation: {
+      personalisation: {
+        index_number: 'ED125',
+        file_key_to_attach: 'link_to_file',
+        link_to_file: 'dummy.pdf',
+        filename_for_display: 'DownloadThis.pdf'
+      }
+    },
+    emailAddress: 'dummy-not-required'
+  }
+}
+
 describe('ProcessNotification with attachment', () => {
   jest.mock('notifications-node-client', () => {
     const MockNotifyClient = jest.fn().mockImplementation(() => ({
       sendEmail: mockSendEmail,
-      prepareUpload: mockPrepareUpload
+      prepareUpload: mockPrepareUpload,
+      sendPrecompiledLetter: mockSendPrecompiledLetter
     }))
 
     return {
@@ -47,7 +68,7 @@ describe('ProcessNotification with attachment', () => {
   test('should process valid message and attach file', async () => {
     getAttachmentFile.mockResolvedValue('abcdef')
 
-    await processNotification(validMessage)
+    await processNotification(validMessageForEmail)
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.anything(),
@@ -66,7 +87,7 @@ describe('ProcessNotification with attachment', () => {
   test('should process valid message and attach file with no download name', async () => {
     getAttachmentFile.mockResolvedValue('abcdef')
 
-    const message = { ...validMessage }
+    const message = { ...validMessageForEmail }
     delete message.data.personalisation.personalisation.filename_for_display
 
     await processNotification(message)
@@ -82,5 +103,14 @@ describe('ProcessNotification with attachment', () => {
           dog_name: 'Rex'
         }
       })
+  })
+
+  test('should process valid message and call sendPrecompiledLetter with attached file', async () => {
+    getAttachmentFile.mockResolvedValue('abcdef')
+
+    await processNotification(validMessageForPost)
+
+    expect(mockSendPrecompiledLetter).toHaveBeenCalledTimes(1)
+    expect(mockSendPrecompiledLetter.mock.calls[0][0].startsWith('ED125_')).toBeTruthy()
   })
 })
