@@ -1,0 +1,5 @@
+resources:
+  identity: aphw-ddi-notifications
+  queues:
+    - name: aphw-ddi-notifications
+      role: receiver
