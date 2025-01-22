@@ -51,6 +51,11 @@ describe('GetNotificationType', () => {
     expect(res).toBe('post-application-pack')
   })
 
+  test('should handle withdrawal-confirmation type', async () => {
+    const res = getNotificationType('withdrawal-confirmation')
+    expect(res).toBe('withdrawal-confirmation')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })

@@ -44,6 +44,7 @@ container:
   form2SubmissionToDefraTemplateId: dummy
   form2ConfirmationToPoliceTemplateId: dummy
   sendApplicationPackTemplateId: dummy
+  sendWithdrawalConfirmationTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
 
