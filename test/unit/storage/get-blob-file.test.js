@@ -20,9 +20,17 @@ describe('storage repos get-blob-file', () => {
 
   describe('getBlobFile', () => {
     test('should get attachment file if exists', async () => {
-      const res = await getBlobFile()
+      const res = await getBlobFile('abc.pdf')
       expect(res).not.toBe(null)
       expect(downloadFn).toHaveBeenCalled()
+      expect(blobServiceClient.getContainerClient).toHaveBeenCalledWith('attachments')
+    })
+
+    test('should get attachment file if exists in contaioner specified', async () => {
+      const res = await getBlobFile('abc', 'certificates')
+      expect(res).not.toBe(null)
+      expect(downloadFn).toHaveBeenCalled()
+      expect(blobServiceClient.getContainerClient).toHaveBeenCalledWith('certificates')
     })
 
     test('should throw if file doesnt exist', async () => {
@@ -33,7 +41,7 @@ describe('storage repos get-blob-file', () => {
           downloadToBuffer: downloadFn
         })
       })
-      await expect(() => getBlobFile('file123.pdf')).rejects.toThrow('Attachment (file123.pdf) does not exist')
+      await expect(() => getBlobFile('file123.pdf')).rejects.toThrow('File file123.pdf in container attachments does not exist')
     })
   })
 })

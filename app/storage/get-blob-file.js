@@ -2,9 +2,8 @@ const { blobServiceClient } = require('./get-blob-client')
 const { storageConfig } = require('../config')
 
 const getBlobFile = async (filename, containerName = null) => {
-  const container = blobServiceClient.getContainerClient(
-    containerName === 'certificates' ? storageConfig.certificatesContainer : storageConfig.attachmentsContainer
-  )
+  const containerToUse = containerName === 'certificates' ? storageConfig.certificatesContainer : storageConfig.attachmentsContainer
+  const container = blobServiceClient.getContainerClient(containerToUse)
 
   await container.createIfNotExists()
 
@@ -13,7 +12,7 @@ const getBlobFile = async (filename, containerName = null) => {
   const exists = await blobClient.exists()
 
   if (!exists) {
-    throw new Error(`Attachment (${filename}) does not exist`)
+    throw new Error(`File ${filename} in container ${containerToUse} does not exist`)
   }
 
   return blobClient.downloadToBuffer()

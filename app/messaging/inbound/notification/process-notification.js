@@ -40,6 +40,10 @@ const processNotification = async notification => {
         customFields[customFields.file_key_to_attach] = client.prepareUpload(fileContents, options)
         delete customFields.file_key_to_attach
 
+        if (customFields.blob_container) {
+          delete customFields.blob_container
+        }
+
         await client.sendEmail(templates[type],
           data.emailAddress,
           { personalisation: customFields }
