@@ -1,8 +1,10 @@
 const { blobServiceClient } = require('./get-blob-client')
 const { storageConfig } = require('../config')
 
-const getAttachmentFile = async (filename) => {
-  const container = blobServiceClient.getContainerClient(storageConfig.attachmentsContainer)
+const getBlobFile = async (filename, containerName = null) => {
+  const container = blobServiceClient.getContainerClient(
+    containerName === 'certificates' ? storageConfig.certificatesContainer : storageConfig.attachmentsContainer
+  )
 
   await container.createIfNotExists()
 
@@ -18,5 +20,5 @@ const getAttachmentFile = async (filename) => {
 }
 
 module.exports = {
-  getAttachmentFile
+  getBlobFile
 }

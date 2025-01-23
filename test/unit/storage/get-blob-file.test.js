@@ -11,16 +11,16 @@ blobServiceClient.getContainerClient.mockReturnValue({
   })
 })
 
-const { getAttachmentFile } = require('../../../app/storage/attachments')
+const { getBlobFile } = require('../../../app/storage/get-blob-file')
 
-describe('storage repos attachments', () => {
+describe('storage repos get-blob-file', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
-  describe('getAttachmentFile', () => {
+  describe('getBlobFile', () => {
     test('should get attachment file if exists', async () => {
-      const res = await getAttachmentFile()
+      const res = await getBlobFile()
       expect(res).not.toBe(null)
       expect(downloadFn).toHaveBeenCalled()
     })
@@ -33,7 +33,7 @@ describe('storage repos attachments', () => {
           downloadToBuffer: downloadFn
         })
       })
-      await expect(() => getAttachmentFile('file123.pdf')).rejects.toThrow('Attachment (file123.pdf) does not exist')
+      await expect(() => getBlobFile('file123.pdf')).rejects.toThrow('Attachment (file123.pdf) does not exist')
     })
   })
 })

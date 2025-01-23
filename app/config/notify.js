@@ -12,7 +12,9 @@ const schema = Joi.object({
     form2SubmissionToDefra: Joi.string().uuid().required(),
     form2ConfirmationToPolice: Joi.string().uuid().required(),
     emailApplicationPack: Joi.string().uuid().required(),
-    withdrawalConfirmation: Joi.string().uuid().required()
+    withdrawalConfirmation: Joi.string().uuid().required(),
+    emailFirstCertificate: Joi.string().uuid().required(),
+    emailReplacementCertificate: Joi.string().uuid().required()
   }).required()
 })
 
@@ -27,7 +29,9 @@ const config = {
     form2SubmissionToDefra: getEnvironmentVariable('FORM2_SUBMISSION_TO_DEFRA_TEMPLATE_ID'),
     form2ConfirmationToPolice: getEnvironmentVariable('FORM2_CONFIRMATION_TO_POLICE_TEMPLATE_ID'),
     emailApplicationPack: getEnvironmentVariable('SEND_APPLICATION_PACK_TEMPLATE_ID'),
-    withdrawalConfirmation: getEnvironmentVariable('SEND_WITHDRAWAL_CONFIRMATION_TEMPLATE_ID')
+    withdrawalConfirmation: getEnvironmentVariable('SEND_WITHDRAWAL_CONFIRMATION_TEMPLATE_ID'),
+    emailFirstCertificate: getEnvironmentVariable('EMAIL_FIRST_CERTIFICATE_TEMPLATE_ID'),
+    emailReplacementCertificate: getEnvironmentVariable('EMAIL_REPLACEMENT_CERTIFICATE_TEMPLATE_ID')
   }
 }
 

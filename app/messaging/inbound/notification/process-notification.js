@@ -4,7 +4,7 @@ const { notify } = require('../../../config')
 const { getNotificationType } = require('./get-notification-type')
 const { validate } = require('./schemas/notification-data-schema')
 const { NotifyClient } = require('notifications-node-client')
-const { getAttachmentFile } = require('../../../storage/attachments')
+const { getBlobFile } = require('../../../storage/get-blob-file')
 const { POST_APPLICATION_PACK } = require('../../../constants/notification-types')
 
 const client = new NotifyClient(notify.apiKey)
@@ -24,13 +24,15 @@ const processNotification = async notification => {
 
     if (customFields?.file_key_to_attach) {
       const filename = customFields[customFields.file_key_to_attach]
-      const fileContents = await getAttachmentFile(filename)
+      const blobContainer = customFields?.blobContainer
+
+      const fileContents = await getBlobFile(filename, blobContainer)
 
       if (type === POST_APPLICATION_PACK) {
         reference = `${customFields.index_number}_${uuidv4()}`
         await client.sendPrecompiledLetter(reference, fileContents, 'first')
       } else {
-        const options = { confirmEmailBeforeDownload: false }
+        const options = { confirmEmailBeforeDownload: false, retentionPeriod: '78 weeks' }
         if (customFields.filename_for_display) {
           options.filename = customFields.filename_for_display
         }

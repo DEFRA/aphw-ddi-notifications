@@ -55,8 +55,8 @@ describe('ProcessNotification with attachment', () => {
     }
   })
 
-  jest.mock('../../../app/storage/attachments')
-  const { getAttachmentFile } = require('../../../app/storage/attachments')
+  jest.mock('../../../app/storage/get-blob-file')
+  const { getBlobFile } = require('../../../app/storage/get-blob-file')
 
   const { processNotification } = require('../../../app/messaging/inbound/notification/process-notification')
 
@@ -66,7 +66,7 @@ describe('ProcessNotification with attachment', () => {
   })
 
   test('should process valid message and attach file', async () => {
-    getAttachmentFile.mockResolvedValue('abcdef')
+    getBlobFile.mockResolvedValue('abcdef')
 
     await processNotification(validMessageForEmail)
 
@@ -85,7 +85,7 @@ describe('ProcessNotification with attachment', () => {
   })
 
   test('should process valid message and attach file with no download name', async () => {
-    getAttachmentFile.mockResolvedValue('abcdef')
+    getBlobFile.mockResolvedValue('abcdef')
 
     const message = { ...validMessageForEmail }
     delete message.data.personalisation.personalisation.filename_for_display
@@ -106,7 +106,7 @@ describe('ProcessNotification with attachment', () => {
   })
 
   test('should process valid message and call sendPrecompiledLetter with attached file', async () => {
-    getAttachmentFile.mockResolvedValue('abcdef')
+    getBlobFile.mockResolvedValue('abcdef')
 
     await processNotification(validMessageForPost)
 
