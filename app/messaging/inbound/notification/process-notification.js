@@ -24,7 +24,7 @@ const processNotification = async notification => {
 
     if (customFields?.file_key_to_attach) {
       const filename = customFields[customFields.file_key_to_attach]
-      const blobContainer = customFields?.blobContainer
+      const blobContainer = customFields?.blob_container
 
       const fileContents = await getBlobFile(filename, blobContainer)
 
