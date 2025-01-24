@@ -45,6 +45,8 @@ container:
   form2ConfirmationToPoliceTemplateId: dummy
   sendApplicationPackTemplateId: dummy
   sendWithdrawalConfirmationTemplateId: dummy
+  emailFirstCertificateTemplateId: dummy
+  emailReplacementCertificateTemplateId: dummy
   notificationsQueueAddress: aphw-ddi-notifications
   eventsTopicAddress: aphw-ddi-events
 

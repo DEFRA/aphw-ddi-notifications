@@ -8,5 +8,7 @@ module.exports = {
   FORM2_CONFIRMATION_TO_POLICE: 'form2-confirmation-to-police',
   EMAIL_APPLICATION_PACK: 'email-application-pack',
   POST_APPLICATION_PACK: 'post-application-pack',
-  WITHDRAWAL_CONFIRMATION: 'withdrawal-confirmation'
+  WITHDRAWAL_CONFIRMATION: 'withdrawal-confirmation',
+  EMAIL_FIRST_CERTIFICATE: 'email-first-certificate',
+  EMAIL_REPLACEMENT_CERTIFICATE: 'email-replacement-certificate'
 }

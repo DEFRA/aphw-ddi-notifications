@@ -11,18 +11,26 @@ blobServiceClient.getContainerClient.mockReturnValue({
   })
 })
 
-const { getAttachmentFile } = require('../../../app/storage/attachments')
+const { getBlobFile } = require('../../../app/storage/get-blob-file')
 
-describe('storage repos attachments', () => {
+describe('storage repos get-blob-file', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
-  describe('getAttachmentFile', () => {
+  describe('getBlobFile', () => {
     test('should get attachment file if exists', async () => {
-      const res = await getAttachmentFile()
+      const res = await getBlobFile('abc.pdf')
       expect(res).not.toBe(null)
       expect(downloadFn).toHaveBeenCalled()
+      expect(blobServiceClient.getContainerClient).toHaveBeenCalledWith('attachments')
+    })
+
+    test('should get attachment file if exists in contaioner specified', async () => {
+      const res = await getBlobFile('abc', 'certificates')
+      expect(res).not.toBe(null)
+      expect(downloadFn).toHaveBeenCalled()
+      expect(blobServiceClient.getContainerClient).toHaveBeenCalledWith('certificates')
     })
 
     test('should throw if file doesnt exist', async () => {
@@ -33,7 +41,7 @@ describe('storage repos attachments', () => {
           downloadToBuffer: downloadFn
         })
       })
-      await expect(() => getAttachmentFile('file123.pdf')).rejects.toThrow('Attachment (file123.pdf) does not exist')
+      await expect(() => getBlobFile('file123.pdf')).rejects.toThrow('File file123.pdf in container attachments does not exist')
     })
   })
 })

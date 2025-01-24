@@ -56,6 +56,16 @@ describe('GetNotificationType', () => {
     expect(res).toBe('withdrawal-confirmation')
   })
 
+  test('should handle email-first-certificate type', async () => {
+    const res = getNotificationType('email-first-certificate')
+    expect(res).toBe('email-first-certificate')
+  })
+
+  test('should handle email-replacement-certificate type', async () => {
+    const res = getNotificationType('email-replacement-certificate')
+    expect(res).toBe('email-replacement-certificate')
+  })
+
   test('should throw if invalid type', async () => {
     expect(() => getNotificationType('invalid')).toThrow('Unknown notification type: invalid')
   })
