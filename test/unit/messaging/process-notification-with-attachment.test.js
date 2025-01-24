@@ -42,6 +42,28 @@ const validMessageForPost = {
   }
 }
 
+const validMessageForEmailSpecifyingBlobContainer = {
+  id: 'b68da60f-6638-4acd-93e6-77f34b0b4ead',
+  time: '2024-07-24T16:39:00.000Z',
+  specversion: '1.0',
+  type: 'email-application-pack',
+  source: 'aphw-ddi-portal',
+  data: {
+    personalisation: {
+      personalisation: {
+        body_message: 'Some text for the email',
+        file_key_to_attach: 'link_to_file',
+        link_to_file: 'dummy.pdf',
+        index_number: 'ED123',
+        dog_name: 'Rex',
+        filename_for_display: 'DownloadThis.pdf',
+        blob_container: 'certificates'
+      }
+    },
+    emailAddress: 'some.person@defra.gov.uk'
+  }
+}
+
 describe('ProcessNotification with attachment', () => {
   jest.mock('notifications-node-client', () => {
     const MockNotifyClient = jest.fn().mockImplementation(() => ({
@@ -112,5 +134,24 @@ describe('ProcessNotification with attachment', () => {
 
     expect(mockSendPrecompiledLetter).toHaveBeenCalledTimes(1)
     expect(mockSendPrecompiledLetter.mock.calls[0][0].startsWith('ED125_')).toBeTruthy()
+  })
+
+  test('should process valid message and attach file from specified blob container', async () => {
+    getBlobFile.mockResolvedValue('abcdef')
+
+    await processNotification(validMessageForEmailSpecifyingBlobContainer)
+
+    expect(mockSendEmail).toHaveBeenCalledWith(
+      expect.anything(),
+      'some.person@defra.gov.uk',
+      {
+        personalisation: {
+          body_message: 'Some text for the email',
+          link_to_file: '/download/123',
+          index_number: 'ED123',
+          dog_name: 'Rex',
+          filename_for_display: 'DownloadThis.pdf'
+        }
+      })
   })
 })
