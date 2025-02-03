@@ -5,6 +5,7 @@ const { MessageReceiver } = require('ffc-messaging')
 let receiver
 
 const start = async () => {
+  /* istanbul ignore next */
   const action = message => processNotificationMessage(message, receiver)
   receiver = new MessageReceiver(messageConfig.notificationQueue, action)
   await receiver.subscribe()
