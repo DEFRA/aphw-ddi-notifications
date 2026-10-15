@@ -17,21 +17,21 @@
   "contributors": [],
   "license": "OGL-UK-3.0",
   "dependencies": {
-    "@azure/identity": "4.2.1",
-    "@azure/storage-blob": "^12.11.0",
-    "@hapi/hapi": "21.3.2",
-    "applicationinsights": "2.8.0",
-    "ffc-messaging": "2.10.0",
-    "joi": "^17.11.0",
+    "@azure/identity": "^4.13.3",
+    "@azure/storage-blob": "^12.17.0",
+    "@hapi/hapi": "^21.4.10",
+    "applicationinsights": "^3.16.0",
+    "ffc-messaging": "^2.10.10",
+    "joi": "^17.13.8",
     "log-timestamp": "^0.3.0",
-    "notifications-node-client": "8.2.0",
-    "braces": "3.0.3"
+    "notifications-node-client": "^8.2.0",
+    "braces": "^3.0.3"
   },
   "devDependencies": {
-    "jest": "29.7.0",
-    "jest-junit": "16.0.0",
-    "nodemon": "3.0.1",
-    "standard": "17.1.0"
+    "jest": "^30.5.2",
+    "jest-junit": "^17.0.0",
+    "nodemon": "^3.0.1",
+    "standard": "^17.1.2"
   },
   "standard": {
     "globals": [
