@@ -25,7 +25,8 @@
     "joi": "^17.13.8",
     "log-timestamp": "^0.3.0",
     "notifications-node-client": "^8.2.0",
-    "braces": "^3.0.3"
+    "braces": "^3.0.3",
+    "uuid": "^11.1.1"
   },
   "devDependencies": {
     "jest": "^30.5.2",
@@ -49,5 +50,8 @@
     "ignore": [
       "**/test-output/**"
     ]
-  } 
+  },
+  "overrides": {
+    "uuid": "$uuid"
+  }
 }
