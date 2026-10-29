@@ -1,0 +1,122 @@
+name: '$(Build.SourceBranchName)$(System.PullRequest.SourceBranch)$(Rev:.r)'
+
+trigger:
+  - main
+  - feature/*
+  - release/*
+
+pr:
+  - main
+  - releases/*
+
+parameters:
+  - name: prDeployment
+    type: boolean
+    default: true
+  - name: branchDeployment
+    type: boolean
+    default: true
+  - name: snd2Deployment
+    type: boolean
+    default: true
+  - name: snd1Deployment
+    type: boolean
+    default: false
+
+resources:
+  repositories:
+    - repository: templates
+      endpoint: DEFRA
+      type: github
+      name: defra/fcp-pipeline-common
+      # ref: branch-name
+
+extends:
+  template: fcp-common-pipeline.yaml@templates
+  parameters:
+    appFrameworkType: nodejs
+    prDeployment: ${{ parameters.prDeployment }}
+    branchDeployment: ${{ parameters.branchDeployment }}
+    sndDeployment: ${{ parameters.snd2Deployment }}
+    snd1Deployment: ${{ parameters.snd1Deployment }}
+    variableGroupName: aphw-ddi-notifications-env-var
+    pr_params:
+      container.azureStorageAccountName: $(snd2_container_azureStorageAccountName)
+      container.genericErrorTemplateId: $(snd2_container_genericErrorTemplateId)
+      container.verifyEmailTemplateId: $(snd2_container_verifyEmailTemplateId)
+      container.userFeedbackTemplateId: $(snd2_container_userFeedbackTemplateId)
+      container.userInviteTemplateId: $(snd2_container_userInviteTemplateId)
+      container.reportSomethingTemplateId: $(snd2_container_reportSomethingTemplateId)
+      container.form2SubmissionToDefraTemplateId: $(snd2_container_form2SubmissionToDefraTemplateId)
+      container.form2ConfirmationToPoliceTemplateId: $(snd2_container_form2ConfirmationToPoliceTemplateId)
+      container.sendApplicationPackTemplateId: $(snd2_container_sendApplicationPackTemplateId)
+      container.sendWithdrawalConfirmationTemplateId: $(snd2_container_sendWithdrawalConfirmationTemplateId)
+      container.emailFirstCertificateTemplateId: $(snd2_container_emailFirstCertificateTemplateId)
+      container.emailReplacementCertificateTemplateId: $(snd2_container_emailReplacementCertificateTemplateId)
+    snd2_params:
+      container.azureStorageAccountName: $(snd2_container_azureStorageAccountName)
+      container.genericErrorTemplateId: $(snd2_container_genericErrorTemplateId)
+      container.verifyEmailTemplateId: $(snd2_container_verifyEmailTemplateId)
+      container.userFeedbackTemplateId: $(snd2_container_userFeedbackTemplateId)
+      container.userInviteTemplateId: $(snd2_container_userInviteTemplateId)
+      container.reportSomethingTemplateId: $(snd2_container_reportSomethingTemplateId)
+      container.form2SubmissionToDefraTemplateId: $(snd2_container_form2SubmissionToDefraTemplateId)
+      container.form2ConfirmationToPoliceTemplateId: $(snd2_container_form2ConfirmationToPoliceTemplateId)
+      container.sendApplicationPackTemplateId: $(snd2_container_sendApplicationPackTemplateId)
+      container.sendWithdrawalConfirmationTemplateId: $(snd2_container_sendWithdrawalConfirmationTemplateId)
+      container.emailFirstCertificateTemplateId: $(snd2_container_emailFirstCertificateTemplateId)
+      container.emailReplacementCertificateTemplateId: $(snd2_container_emailReplacementCertificateTemplateId)
+    dev_params:
+      container.azureStorageAccountName: $(dev_container_azureStorageAccountName)
+      container.genericErrorTemplateId: $(dev_container_genericErrorTemplateId)
+      container.verifyEmailTemplateId: $(dev_container_verifyEmailTemplateId)
+      container.userFeedbackTemplateId: $(dev_container_userFeedbackTemplateId)
+      container.userInviteTemplateId: $(dev_container_userInviteTemplateId)
+      container.reportSomethingTemplateId: $(dev_container_reportSomethingTemplateId)
+      container.form2SubmissionToDefraTemplateId: $(dev_container_form2SubmissionToDefraTemplateId)
+      container.form2ConfirmationToPoliceTemplateId: $(dev_container_form2ConfirmationToPoliceTemplateId)
+      container.sendApplicationPackTemplateId: $(dev_container_sendApplicationPackTemplateId)
+      container.sendWithdrawalConfirmationTemplateId: $(dev_container_sendWithdrawalConfirmationTemplateId)
+      container.emailFirstCertificateTemplateId: $(dev_container_emailFirstCertificateTemplateId)
+      container.emailReplacementCertificateTemplateId: $(dev_container_emailReplacementCertificateTemplateId)
+    test_params:
+      container.azureStorageAccountName: $(test_container_azureStorageAccountName)
+      container.genericErrorTemplateId: $(test_container_genericErrorTemplateId)
+      container.verifyEmailTemplateId: $(test_container_verifyEmailTemplateId)
+      container.userFeedbackTemplateId: $(test_container_userFeedbackTemplateId)
+      container.userInviteTemplateId: $(test_container_userInviteTemplateId)
+      container.reportSomethingTemplateId: $(test_container_reportSomethingTemplateId)
+      container.form2SubmissionToDefraTemplateId: $(test_container_form2SubmissionToDefraTemplateId)
+      container.form2ConfirmationToPoliceTemplateId: $(test_container_form2ConfirmationToPoliceTemplateId)
+      container.sendApplicationPackTemplateId: $(test_container_sendApplicationPackTemplateId)
+      container.sendWithdrawalConfirmationTemplateId: $(test_container_sendWithdrawalConfirmationTemplateId)
+      container.emailFirstCertificateTemplateId: $(test_container_emailFirstCertificateTemplateId)
+      container.emailReplacementCertificateTemplateId: $(test_container_emailReplacementCertificateTemplateId)
+    pre_params:
+      container.azureStorageAccountName: $(pre_container_azureStorageAccountName)
+      container.genericErrorTemplateId: $(pre_container_genericErrorTemplateId)
+      container.verifyEmailTemplateId: $(pre_container_verifyEmailTemplateId)
+      container.userFeedbackTemplateId: $(pre_container_userFeedbackTemplateId)
+      container.userInviteTemplateId: $(pre_container_userInviteTemplateId)
+      container.reportSomethingTemplateId: $(pre_container_reportSomethingTemplateId)
+      container.form2SubmissionToDefraTemplateId: $(pre_container_form2SubmissionToDefraTemplateId)
+      container.form2ConfirmationToPoliceTemplateId: $(pre_container_form2ConfirmationToPoliceTemplateId)
+      container.sendApplicationPackTemplateId: $(pre_container_sendApplicationPackTemplateId)
+      container.sendWithdrawalConfirmationTemplateId: $(pre_container_sendWithdrawalConfirmationTemplateId)
+      container.emailFirstCertificateTemplateId: $(pre_container_emailFirstCertificateTemplateId)
+      container.emailReplacementCertificateTemplateId: $(pre_container_emailReplacementCertificateTemplateId)
+    prd_params:
+      container.azureStorageAccountName: $(prd_container_azureStorageAccountName)
+      container.genericErrorTemplateId: $(prd_container_genericErrorTemplateId)
+      container.verifyEmailTemplateId: $(prd_container_verifyEmailTemplateId)
+      container.userFeedbackTemplateId: $(prd_container_userFeedbackTemplateId)
+      container.userInviteTemplateId: $(prd_container_userInviteTemplateId)
+      container.reportSomethingTemplateId: $(prd_container_reportSomethingTemplateId)
+      container.form2SubmissionToDefraTemplateId: $(prd_container_form2SubmissionToDefraTemplateId)
+      container.form2ConfirmationToPoliceTemplateId: $(prd_container_form2ConfirmationToPoliceTemplateId)
+      container.sendApplicationPackTemplateId: $(prd_container_sendApplicationPackTemplateId)
+      container.sendWithdrawalConfirmationTemplateId: $(prd_container_sendWithdrawalConfirmationTemplateId)
+      container.emailFirstCertificateTemplateId: $(prd_container_emailFirstCertificateTemplateId)
+      container.emailReplacementCertificateTemplateId: $(prd_container_emailReplacementCertificateTemplateId)
+    enableServiceNowChangeCreationDev: false
+    enableServiceNowChangeCreation: true

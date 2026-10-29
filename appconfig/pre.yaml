@@ -1,1 +1,23 @@
 ---
+environment: production
+environmentCode: pre
+container:
+  messageQueueHost: PREFFCINFSB1001.servicebus.windows.net
+  notificationsQueueAddress: aphw-ddi-notifications
+  eventsTopicAddress: aphw-ddi-events
+secretProviderClass:
+  azure:
+    keyvaultName: PREFFCINFKV1001
+    objects:
+      - objectName: pre-ffcahwr-appinsights-connectionString
+        objectType: secret
+      - objectName: PRE-aphw-ddi-notify-api-key
+        objectType: secret
+  secretObjects:
+    - secretName: aphw-ddi-notifications
+      type: Opaque
+      data:
+        - objectName: pre-ffcahwr-appinsights-connectionString
+          key: APPLICATIONINSIGHTS_CONNECTION_STRING
+        - objectName: PRE-aphw-ddi-notify-api-key
+          key: NOTIFY_API_KEY
