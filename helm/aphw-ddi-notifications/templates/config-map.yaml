@@ -4,6 +4,8 @@ data:
   NODE_ENV: {{ quote .Values.environment }}
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
+  AZURE_STORAGE_USE_CONNECTION_STRING: {{ quote .Values.container.azureStorageUseConnectionString }}
+  AZURE_STORAGE_ACCOUNT_NAME: {{ quote .Values.container.azureStorageAccountName }}
   MESSAGE_QUEUE_HOST: {{ quote .Values.container.messageQueueHost }}
   GENERIC_ERROR_TEMPLATE_ID: {{ quote .Values.container.genericErrorTemplateId }}
   VERIFY_EMAIL_TEMPLATE_ID: {{ quote .Values.container.verifyEmailTemplateId }}

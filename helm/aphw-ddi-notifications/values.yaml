@@ -12,11 +12,10 @@ appInsights:
   connectionString:
 
 containerConfigMap:
-  name: aphw-ddi-notifications-config-map
+  name: aphw-ddi-notifications
 
 containerSecret:
-  name: aphw-ddi-notifications-container-secret
-  type: Opaque
+  name: aphw-ddi-notifications
 
 deployment:
   replicas: 1
@@ -32,10 +31,8 @@ container:
   limitCpu: 100m
   port: 3000
   messageQueueHost: host
-  azureStorageConnectionString: dummy
   azureStorageUseConnectionString: false
   azureStorageAccountName: aphwddi
-  notifyApiKey: notifyApiKey
   genericErrorTemplateId: dummy
   verifyEmailTemplateId: dummy
   userFeedbackTemplateId: dummy
@@ -55,3 +52,20 @@ workloadIdentity: true
 azureIdentity:
   clientID: not-a-real-clientID
   resourceID: not-a-real-resourceID
+
+secretProviderClass:
+  azure:
+    keyvaultName: SNDFFCINFKV2001
+    objects:
+      - objectName: snd2-aphw-appinsights-connectionString
+        objectType: secret
+      - objectName: snd2-aphw-ddi-notify-api-key
+        objectType: secret
+  secretObjects:
+    - secretName: aphw-ddi-notifications
+      type: Opaque
+      data:
+        - objectName: snd2-aphw-appinsights-connectionString
+          key: APPLICATIONINSIGHTS_CONNECTION_STRING
+        - objectName: snd2-aphw-ddi-notify-api-key
+          key: NOTIFY_API_KEY

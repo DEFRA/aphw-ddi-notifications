@@ -1,1 +1,23 @@
 ---
+environment: production
+environmentCode: test
+container:
+  messageQueueHost: DEVFFCINFSB1001.servicebus.windows.net
+  notificationsQueueAddress: aphw-ddi-notifications
+  eventsTopicAddress: aphw-ddi-events
+secretProviderClass:
+  azure:
+    keyvaultName: DEVFFCINFKV1001
+    objects:
+      - objectName: devtest-ffcahwr-appInsights-connectionString
+        objectType: secret
+      - objectName: TEST-aphw-ddi-notify-api-key
+        objectType: secret
+  secretObjects:
+    - secretName: aphw-ddi-notifications
+      type: Opaque
+      data:
+        - objectName: devtest-ffcahwr-appInsights-connectionString
+          key: APPLICATIONINSIGHTS_CONNECTION_STRING
+        - objectName: TEST-aphw-ddi-notify-api-key
+          key: NOTIFY_API_KEY
